@@ -33,7 +33,7 @@
         }
         .image-title {
             position: absolute;
-            bottom: 0;     
+            bottom: 0;
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(20px);
             color: black;
@@ -57,10 +57,38 @@
             left: 20px;
             top: 10px;
         }
+        #searchBar {
+            margin: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        #searchInput {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px 0 0 5px;
+            border: 1px solid #ccc;
+            width: 300px;
+        }
+        #searchButton {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 0 5px 5px 0;
+            border: 1px solid #ccc;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+        #searchButton:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <h1 id="queryTitle">"Say anything"</h1>
+    <div id="searchBar">
+        <input type="text" id="searchInput" placeholder="Type your search here...">
+        <button id="searchButton">Search</button>
+    </div>
     <div id="imageContainer"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
@@ -100,6 +128,22 @@
                 imageContainer.innerHTML = `<div class="image-group"><p>No results found for "${tag}".</p></div>`;
             }
         };
+
+        document.getElementById('searchButton').addEventListener('click', () => {
+            const searchQuery = document.getElementById('searchInput').value.trim();
+            if (searchQuery) {
+                fetchGifs(searchQuery);
+            }
+        });
+
+        document.getElementById('searchInput').addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                const searchQuery = document.getElementById('searchInput').value.trim();
+                if (searchQuery) {
+                    fetchGifs(searchQuery);
+                }
+            }
+        });
 
         if (annyang) {
             const commands = {
