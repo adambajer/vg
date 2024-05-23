@@ -97,16 +97,18 @@
         const API_KEY = 'gxIFvvO71KLB9I3q3lyVmW9bc2V796qu'; // Replace with your actual Giphy API key
 
         const fetchGifs = async (tag) => {
-            try {
-                const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${API_KEY}&q=${tag}&limit=25`);
-                const result = await response.json();
-                const gifs = result.data;
-                document.getElementById('queryTitle').innerText = `"${tag}"`;
-                displayGifs(gifs, tag);
-            } catch (error) {
-                console.error('Error fetching GIFs:', error);
-            }
-        };
+    const apiKey = process.env.GIPHY_API_KEY;  // Use environment variable for API key
+    try {
+        const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${tag}&limit=25`);
+        const result = await response.json();
+        const gifs = result.data;
+        document.getElementById('queryTitle').innerText = `"${tag}"`;
+        displayGifs(gifs, tag);
+    } catch (error) {
+        console.error('Error fetching GIFs:', error);
+    }
+};
+
 
         const displayGifs = (gifs, tag) => {
             const imageContainer = document.getElementById('imageContainer');
