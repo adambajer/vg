@@ -28,5 +28,5 @@ jobs:
       env:
         GIPHY_API_KEY: ${{ secrets.GIPHY_API_KEY }}
       run: |
-        echo "API Key: $GIPHY_API_KEY"  # This is just an example, do not log your API key
+        echo "API Key: $GIPHY_API_KEY"  # Example usage, do not log your API key
         # Add your deployment script here, using the API key as necessary
