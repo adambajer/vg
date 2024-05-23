@@ -120,12 +120,11 @@
     <script src="https://unpkg.com/@giphy/js-fetch-api@latest/dist/giphy-fetch.umd.min.js"></script>
     <script>
         if (annyang) {
-            const GiphyFetch = window.GiphyFetch;
-            const gf = new GiphyFetch('gxIFvvO71KLB9I3q3lyVmW9bc2V796qu');
+            const gf = new window.GiphyFetch('YOUR_API_KEY');
 
             const showGifs = function(tag) {
-                tag = tag.replace(/\.$/, ''); 
-                document.getElementById('queryPlaceholder').textContent = tag; 
+                tag = tag.replace(/\.$/, '');
+                document.getElementById('queryPlaceholder').textContent = tag;
                 $('#imageContainer').empty();
                 fetchGifs(tag, 'imageContainer');
             };
