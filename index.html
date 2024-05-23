@@ -13,9 +13,9 @@
             border-radius: 10px;
         }
         img {
-            width: 100%; /* Ensure images resize according to column width */
+            width: 100%;
             height: auto;
-            vertical-align: top; /* Aligns the image at the top of the container */
+            vertical-align: top;
         }
         a {
             color: #007bff;
@@ -25,14 +25,14 @@
             text-decoration: underline;
         }
         .image-group {
-            column-count: 5; /* Adjust number based on preference and screen size */
+            column-count: 5;
             column-gap: 2px;
-            width: 100%; /* Full width */
+            width: 100%;
             margin: 0 auto;
         }
         .image-box {
             position: relative;
-            break-inside: avoid; /* Prevents the element from splitting across columns */
+            break-inside: avoid;
             margin-bottom: 2px;
             overflow: hidden;
             border-radius: 10px;
@@ -87,8 +87,8 @@
             width: 100%;
         }
         .loader {
-            border: 5px solid #f3f3f3; /* Light grey */
-            border-top: 5px solid #3498db; /* Blue */
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #3498db;
             border-radius: 50%;
             width: 30px;
             height: 30px;
@@ -117,18 +117,15 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://unpkg.com/@giphy/js-fetch-api@3.2.6/dist/index.min.js"></script>
+    <script src="https://unpkg.com/@giphy/js-fetch-api@latest/dist/giphy-fetch.umd.min.js"></script>
     <script>
         if (annyang) {
-            // Initialize audio elements
-            
-            // Initialize Giphy SDK
             const GiphyFetch = window.GiphyFetch;
             const gf = new GiphyFetch('gxIFvvO71KLB9I3q3lyVmW9bc2V796qu');
 
             const showGifs = function(tag) {
-                tag = tag.replace(/\.$/, ''); // Remove a period if it's at the end of the string
-                document.getElementById('queryPlaceholder').textContent = tag; // Update the query in the H1 dynamically
+                tag = tag.replace(/\.$/, ''); 
+                document.getElementById('queryPlaceholder').textContent = tag; 
                 $('#imageContainer').empty();
                 fetchGifs(tag, 'imageContainer');
             };
