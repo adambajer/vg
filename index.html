@@ -96,7 +96,7 @@
     <script>
  
         const fetchGifs = async (tag) => {
-    const apiKey = process.env.GIPHY_API_KEY;  // Use environment variable for API key
+    const apiKey ='gxIFvvO71KLB9I3q3lyVmW9bc2V796qu';  // Use environment variable for API key
     try {
         const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${tag}&limit=25`);
         const result = await response.json();
