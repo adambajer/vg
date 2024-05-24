@@ -24,12 +24,15 @@ jobs:
     - name: Build project
       run: npm run build
 
-    - name: Deploy to GitHub Pages
+    - name: Move build files
       run: |
-        rm -rf ./*
-        mv dist/* ./
+        mkdir -p public
+        cp -r dist/* public/
+
+    - name: Commit and Push Changes
+      run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
-        git add .
+        git add public
         git commit -m "Deploy to GitHub Pages"
         git push origin main --force
