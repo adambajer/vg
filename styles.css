@@ -10,7 +10,7 @@ img {
     width: 50%;
     height: auto;
     vertical-align: top;
-    transition: transform 1s linear;
+    transition: left 1s linear;
 }
 
 .carousel {
@@ -26,18 +26,16 @@ img {
 .carousel img {
     width: 100%;
     position: absolute;
-    top: 20vh;
-    left: 0;
-    transform: translateX(100vw);
-    transition: transform 1s linear;
+    top: 0;
+    left: 100vw;
 }
 
 .carousel img.active {
-    transform: translateX(0);
+    left: 0;
 }
 
 .carousel img.exit {
-    transform: translateX(-100vw);
+    left: -100vw;
 }
 
 #queryTitle {
@@ -116,7 +114,7 @@ img {
     background-color: #f3f3f3;
     border-radius: 5px;
     margin-top: 20px;
-    z-index:999999;
+    z-index: 999999;
 }
 
 .progress-bar {
@@ -139,9 +137,9 @@ img {
     height: auto;
     overflow-x: auto;
     margin-top: 70px;
-    z-index:999999;
-    position:absolute;
-    justify-content: center; /* Center buffer items horizontally */
+    z-index: 999999;
+    position: absolute;
+    justify-content: center;
 }
 
 .buffer-item {
@@ -151,3 +149,5 @@ img {
     background-color: #eee;
     border-radius: 5px;
 }
+#annyangStatus {
+    color:white;}
