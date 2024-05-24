@@ -59,10 +59,12 @@ img {
     position: fixed;
     display: flex;
     justify-content: center;
+    align-items: center;
     backdrop-filter: blur(5px);
     background: #ffffff30;
     width: 100%;
     top: 0;
+    padding: 10px;
 }
 
 #searchInput {
@@ -85,6 +87,27 @@ img {
 
 #searchButton:hover {
     background-color: #0056b3;
+}
+
+#toggleAnnyang {
+    margin-left: 20px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+#toggleAnnyang:hover {
+    background-color: #218838;
+}
+
+#annyangStatus {
+    margin-left: 20px;
+    font-size: 16px;
+    color: #555;
 }
 
 .progress-container {
