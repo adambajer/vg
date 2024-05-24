@@ -7,9 +7,10 @@ body {
 }
 
 img {
-    width: 100%;
+    width: 50%;
     height: auto;
     vertical-align: top;
+    transition: transform 1s linear;
 }
 
 .carousel {
