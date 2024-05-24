@@ -35,8 +35,7 @@ const processBuffer = async () => {
     for (let i = 0; i < gifs.length; i++) {
         const gifUrl = gifs[i].images.fixed_width.url;
         const img = document.createElement('img');
-        img.src = gifUrl;
-        img.alt = gif.title;
+        img.src = gifUrl; 
         carousel.appendChild(img);
 
         await slideImage(img, progressBar, i, gifs.length);
