@@ -15,7 +15,7 @@ const processBuffer = async () => {
     const tag = buffer.shift();
 
     document.getElementById('searchInput').value = tag;
-    updateBufferDisplay(tag);
+    updateBufferDisplay();
 
     try {
         showLoading(true);
@@ -85,10 +85,10 @@ const updateProgressBar = (progressBar, percentage) => {
     progressBar.style.width = `${percentage * 100}%`;
 };
 
-const updateBufferDisplay = (activeTag = '') => {
+const updateBufferDisplay = () => {
     const bufferContainer = document.getElementById('buffer');
-    bufferContainer.innerHTML = buffer.map((item) => {
-        const activeClass = item === activeTag ? 'active' : '';
+    bufferContainer.innerHTML = buffer.map((item, index) => {
+        const activeClass = index === 0 ? 'active' : '';
         return `<div class="buffer-item ${activeClass}">${item}</div>`;
     }).join('');
 };
@@ -134,12 +134,10 @@ const toggleAnnyang = () => {
 document.getElementById('toggleAnnyang').addEventListener('click', toggleAnnyang);
 
 if (annyang) {
-    const commands = {
-        '*tag': (tag) => {
-            addQueryToBuffer(tag);
-        }
-    };
-    annyang.addCommands(commands);
+    annyang.addCallback('result', (phrases) => {
+        const searchQuery = phrases[0];
+        addQueryToBuffer(searchQuery);
+    });
 } else {
     document.getElementById('carousel').innerHTML = "<p>Your browser does not support voice recognition.</p>";
 }
