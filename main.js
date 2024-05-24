@@ -65,17 +65,18 @@ const slideImage = (img, progressBar, index, total) => {
         if (prevImg) {
             prevImg.classList.remove('active');
             prevImg.classList.add('exit');
+            setTimeout(() => {
+                prevImg.classList.remove('exit');
+                prevImg.remove();
+            }, 1000); // Ensure this time matches the CSS transition duration
         }
 
         img.classList.add('active');
+        img.style.left = '0';
 
         updateProgressBar(progressBar, (index + 1) / total);
 
         setTimeout(() => {
-            if (prevImg) {
-                prevImg.classList.remove('exit');
-                prevImg.remove();
-            }
             resolve();
         }, 3000);
     });
