@@ -1,14 +1,9 @@
-make it responsive modern layout, not intrusive, mobile frendly, glassmorphism, cool looking, minimalistic, images of gif full height, translate animations body {
+body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 4px;
     border-radius: 10px;
-}
- div#carousel {
-    display: block;
-    width: auto;
-    height: 100vh;
 }
 #queryTitle {
     background: rgba(255, 255, 255, 0.5);
@@ -23,10 +18,6 @@ make it responsive modern layout, not intrusive, mobile frendly, glassmorphism, 
     bottom: 10%;
     border: 1px solid white;
     font-size: 3rem;
-}
-img {
-    width: 50vw;
-    height: auto;
 }
 #searchBar {
     margin: 0px;
@@ -145,15 +136,14 @@ top:100px;
 
 #carousel img {
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 100%;
-    transform: translateY(-50%);
     transition: left 1s;
 }
 
 #carousel img.active {
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 0%;
+    transform: translate(-50%, 0);
 }
 
 .carousel img.exit {
