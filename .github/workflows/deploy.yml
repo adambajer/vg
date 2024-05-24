@@ -25,7 +25,13 @@ jobs:
       run: npm run build
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./dist
+      run: |
+        mkdir -p public
+        cp -r dist/* public/
+    - name: Push to GitHub Pages
+      run: |
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git add public
+        git commit -m "Deploy to GitHub Pages"
+        git push
