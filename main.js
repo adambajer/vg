@@ -119,12 +119,12 @@ const toggleAnnyang = () => {
     if (annyang) {
         if (isAnnyangActive) {
             annyang.abort();
-            document.getElementById('annyangStatus').innerText = 'Voice recognition is off.';
-            document.getElementById('toggleAnnyang').innerText = 'Start Voice Recognition';
+            document.getElementById('toggleAnnyang').innerText = 'Start';
+            document.getElementById('toggleAnnyang').classList.toggle('rec');
         } else {
             annyang.start({ autoRestart: true, continuous: false });
-            document.getElementById('annyangStatus').innerText = 'Voice recognition is on.';
-            document.getElementById('toggleAnnyang').innerText = 'Stop Voice Recognition';
+            document.getElementById('toggleAnnyang').innerText = 'Stop';
+            document.getElementById('toggleAnnyang').classList.toggle('rec');
         }
         isAnnyangActive = !isAnnyangActive;
     } else {
