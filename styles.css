@@ -75,27 +75,16 @@ img {
 #searchButton:hover {
     background-color: #0056b3;
 }
-
-#buffer {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255, 255, 255, 0.8);
-    padding: 10px;
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 300px;
+    margin: auto;
+    overflow: hidden;
     border-radius: 10px;
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
 }
 
-.buffer-item {
-    background: #007bff;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
 .carousel img {
     width: 100%;
     position: absolute;
@@ -105,6 +94,10 @@ img {
 
 .carousel img.active {
     transform: translateX(0);
+}
+
+.carousel img.exit {
+    transform: translateX(-100%);
 }
 
 .progress-container {

@@ -2,57 +2,71 @@ let buffer = [];
 let isProcessing = false;
 
 const fetchGifs = async (tag) => {
-    const apiKey = 'gxIFvvO71KLB9I3q3lyVmW9bc2V796qu';
-    try {
-        const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${tag}&limit=25`);
-        const result = await response.json();
-        const gifs = result.data;
-        buffer.push({ tag, gifs });
-        processBuffer();
-    } catch (error) {
-        console.error('Error fetching GIFs:', error);
-    }
+    buffer.push(tag);
+    processBuffer();
 };
 
 const processBuffer = async () => {
     if (isProcessing || buffer.length === 0) return;
 
     isProcessing = true;
-    const { tag, gifs } = buffer.shift();
+    const tag = buffer.shift();
 
     document.getElementById('queryTitle').innerText = `"${tag}"`;
     updateBufferDisplay(tag);
 
-    const carousel = document.getElementById('carousel');
-    carousel.innerHTML = '';
-    const progressContainer = document.createElement('div');
-    progressContainer.className = 'progress-container';
-    const progressBar = document.createElement('div');
-    progressBar.className = 'progress-bar';
-    progressContainer.appendChild(progressBar);
-    document.body.appendChild(progressContainer);
+    try {
+        const apiKey = 'gxIFvvO71KLB9I3q3lyVmW9bc2V796qu';
+        const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${tag}&limit=25`);
+        const result = await response.json();
+        const gifs = result.data;
 
-    for (let i = 0; i < gifs.length; i++) {
-        const gifUrl = gifs[i].images.fixed_width.url;
-        const img = document.createElement('img');
-        img.src = gifUrl; 
-        carousel.appendChild(img);
+        const carousel = document.getElementById('carousel');
+        carousel.innerHTML = '';
+        const progressContainer = document.createElement('div');
+        progressContainer.className = 'progress-container';
+        const progressBar = document.createElement('div');
+        progressBar.className = 'progress-bar';
+        progressContainer.appendChild(progressBar);
+        document.body.appendChild(progressContainer);
 
-        await slideImage(img, progressBar, i, gifs.length);
+        for (let i = 0; i < gifs.length; i++) {
+            const gifUrl = gifs[i].images.fixed_width.url;
+            const img = document.createElement('img');
+            img.src = gifUrl;
+            img.alt = gifs[i].title;
+            carousel.appendChild(img);
+
+            await slideImage(img, progressBar, i, gifs.length);
+        }
+
+        document.body.removeChild(progressContainer);
+    } catch (error) {
+        console.error('Error fetching GIFs:', error);
     }
 
-    document.body.removeChild(progressContainer);
     isProcessing = false;
     processBuffer();
 };
 
 const slideImage = (img, progressBar, index, total) => {
     return new Promise((resolve) => {
+        const carousel = document.getElementById('carousel');
+        const prevImg = carousel.querySelector('.active');
+        if (prevImg) {
+            prevImg.classList.remove('active');
+            prevImg.classList.add('exit');
+        }
+
         img.classList.add('active');
+
         updateProgressBar(progressBar, (index + 1) / total);
 
         setTimeout(() => {
-            img.classList.remove('active');
+            if (prevImg) {
+                carousel.removeChild(prevImg);
+            }
+            img.classList.remove('exit');
             resolve();
         }, 3000);
     });
@@ -65,8 +79,8 @@ const updateProgressBar = (progressBar, percentage) => {
 const updateBufferDisplay = (activeTag) => {
     const bufferContainer = document.getElementById('buffer');
     bufferContainer.innerHTML = buffer.map(item => {
-        const activeClass = item.tag === activeTag ? 'active' : '';
-        return `<div class="buffer-item ${activeClass}">${item.tag}</div>`;
+        const activeClass = item === activeTag ? 'active' : '';
+        return `<div class="buffer-item ${activeClass}">${item}</div>`;
     }).join('');
 };
 
