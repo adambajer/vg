@@ -115,11 +115,12 @@ img {
     background-color: #f3f3f3;
     border-radius: 5px;
     margin-top: 20px;
+    z-index:999999;
 }
 
 .progress-bar {
     width: 0;
-    height: 20px;
+    height: 2px;
     background-color: #4caf50;
     border-radius: 5px;
 }
@@ -137,6 +138,8 @@ img {
     height: auto;
     overflow-x: auto;
     margin-top: 70px;
+    z-index:999999;
+    position:absolute;
     justify-content: center; /* Center buffer items horizontally */
 }
 
