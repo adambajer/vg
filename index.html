@@ -11,6 +11,7 @@
         <text id="letter-P" x="30" y="15" font-family="Arial" font-size="15" fill="black" opacity="0">P</text>
         <text id="letter-H" x="45" y="15" font-family="Arial" font-size="15" fill="black" opacity="0">H</text>
         <text id="letter-Y" x="60" y="15" font-family="Arial" font-size="15" fill="black" opacity="0">Y</text>
+           </svg>
         <script type="text/ecmascript">
             <![CDATA[
             const letters = ["G", "I", "P", "H", "Y"];
@@ -22,7 +23,7 @@
             });
             ]]>
         </script>
-    </svg>
+ 
     <link rel="icon" href="#" id="dynamic-favicon">
      <link href="styles.css" rel="stylesheet">
 
@@ -38,24 +39,6 @@
     <div id="carousel"></div>
     <div class="loading"></div>
 
-    <svg id="giphy-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" style="display:none;">
-        <text id="letter-G" x="0" y="15" font-family="Arial" font-size="15" fill="black" opacity="0">G</text>
-        <text id="letter-I" x="15" y="15" font-family="Arial" font-size="15" fill="black" opacity="0">I</text>
-        <text id="letter-P" x="30" y="15" font-family="Arial" font-size="15" fill="black" opacity="0">P</text>
-        <text id="letter-H" x="45" y="15" font-family="Arial" font-size="15" fill="black" opacity="0">H</text>
-        <text id="letter-Y" x="60" y="15" font-family="Arial" font-size="15" fill="black" opacity="0">Y</text>
-        <script type="text/ecmascript">
-            <![CDATA[
-            const letters = ["G", "I", "P", "H", "Y"];
-            letters.forEach((letter, index) => {
-                const element = document.getElementById('letter-' + letter);
-                setTimeout(() => {
-                    element.setAttribute('opacity', '1');
-                }, index * 500);
-            });
-            ]]>
-        </script>
-    </svg>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script src="main.js"></script>
 </body>
