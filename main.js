@@ -3,6 +3,7 @@ let isProcessing = false;
 
 const fetchGifs = async (tag) => {
     buffer.push(tag);
+    updateBufferDisplay();
     processBuffer();
 };
 
@@ -17,7 +18,7 @@ const processBuffer = async () => {
 
     try {
         const apiKey = 'gxIFvvO71KLB9I3q3lyVmW9bc2V796qu';
-        const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${tag}&limit=25`);
+        const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${tag}&limit=3`);
         const result = await response.json();
         const gifs = result.data;
 
@@ -64,9 +65,9 @@ const slideImage = (img, progressBar, index, total) => {
 
         setTimeout(() => {
             if (prevImg) {
-                carousel.removeChild(prevImg);
+                prevImg.classList.remove('exit');
+                prevImg.remove();
             }
-            img.classList.remove('exit');
             resolve();
         }, 3000);
     });
@@ -76,10 +77,10 @@ const updateProgressBar = (progressBar, percentage) => {
     progressBar.style.width = `${percentage * 100}%`;
 };
 
-const updateBufferDisplay = (activeTag) => {
+const updateBufferDisplay = (activeTag = '') => {
     const bufferContainer = document.getElementById('buffer');
-    bufferContainer.innerHTML = buffer.map(item => {
-        const activeClass = item === activeTag ? 'active' : '';
+    bufferContainer.innerHTML = buffer.map((item, index) => {
+        const activeClass = index === 0 ? 'active' : '';
         return `<div class="buffer-item ${activeClass}">${item}</div>`;
     }).join('');
 };
