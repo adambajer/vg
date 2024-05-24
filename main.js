@@ -17,9 +17,12 @@ const processBuffer = async () => {
     updateBufferDisplay(tag);
 
     try {
+        showLoading(true);
         await fetchAndDisplayGifs(tag);
+        showLoading(false);
     } catch (error) {
         console.error('Error fetching GIFs:', error);
+        showLoading(false);
     }
 
     isProcessing = false;
@@ -83,10 +86,15 @@ const updateProgressBar = (progressBar, percentage) => {
 
 const updateBufferDisplay = (activeTag = '') => {
     const bufferContainer = document.getElementById('buffer');
-    bufferContainer.innerHTML = buffer.map((item, index) => {
-        const activeClass = index === 0 ? 'active' : '';
+    bufferContainer.innerHTML = buffer.map((item) => {
+        const activeClass = item === activeTag ? 'active' : '';
         return `<div class="buffer-item ${activeClass}">${item}</div>`;
     }).join('');
+};
+
+const showLoading = (show) => {
+    const loading = document.querySelector('.loading');
+    loading.classList.toggle('visible', show);
 };
 
 document.getElementById('searchButton').addEventListener('click', () => {
