@@ -7,9 +7,9 @@ body {
 }
 
 img {
-    height: 100%;
-    width: auto;
-    vertical-align: top;
+    height: auto;
+    width: 50vw;
+    vertical-align: middle;
 }
 
 .carousel {
