@@ -7,8 +7,8 @@ body {
 }
 
 img {
-    width: 100%;
-    height: auto;
+    height: 100%;
+    width: auto;
     vertical-align: top;
 }
 
@@ -22,20 +22,17 @@ img {
     border-radius: 10px;
 }
 
-.carousel img {
-    width: 50%;
+#carousel img {
     position: absolute;
-    top: 20vh;
-    left: 0;
     transform: translateX(100vw);
     transition: transform 1s linear;
 }
 
-.carousel img.active {
+#carousel img.active {
     transform: translateX(0);
 }
 
-.carousel img.exit {
+#carousel img.exit {
     transform: translateX(-100vw);
 }
 
