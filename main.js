@@ -1,7 +1,7 @@
 let buffer = [];
 let isProcessing = false;
 
-const fetchGifs = async (tag) => {
+const addQueryToBuffer = (tag) => {
     buffer.push(tag);
     updateBufferDisplay();
     processBuffer();
@@ -17,37 +17,41 @@ const processBuffer = async () => {
     updateBufferDisplay(tag);
 
     try {
-        const apiKey = 'gxIFvvO71KLB9I3q3lyVmW9bc2V796qu';
-        const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${tag}&limit=3`);
-        const result = await response.json();
-        const gifs = result.data;
-
-        const carousel = document.getElementById('carousel');
-        carousel.innerHTML = '';
-        const progressContainer = document.createElement('div');
-        progressContainer.className = 'progress-container';
-        const progressBar = document.createElement('div');
-        progressBar.className = 'progress-bar';
-        progressContainer.appendChild(progressBar);
-        document.body.appendChild(progressContainer);
-
-        for (let i = 0; i < gifs.length; i++) {
-            const gifUrl = gifs[i].images.fixed_width.url;
-            const img = document.createElement('img');
-            img.src = gifUrl;
-            img.alt = gifs[i].title;
-            carousel.appendChild(img);
-
-            await slideImage(img, progressBar, i, gifs.length);
-        }
-
-        document.body.removeChild(progressContainer);
+        await fetchAndDisplayGifs(tag);
     } catch (error) {
         console.error('Error fetching GIFs:', error);
     }
 
     isProcessing = false;
     processBuffer();
+};
+
+const fetchAndDisplayGifs = async (tag) => {
+    const apiKey = 'gxIFvvO71KLB9I3q3lyVmW9bc2V796qu';
+    const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${tag}&limit=3`);
+    const result = await response.json();
+    const gifs = result.data;
+
+    const carousel = document.getElementById('carousel');
+    carousel.innerHTML = '';
+    const progressContainer = document.createElement('div');
+    progressContainer.className = 'progress-container';
+    const progressBar = document.createElement('div');
+    progressBar.className = 'progress-bar';
+    progressContainer.appendChild(progressBar);
+    document.body.appendChild(progressContainer);
+
+    for (let i = 0; i < gifs.length; i++) {
+        const gifUrl = gifs[i].images.fixed_width.url;
+        const img = document.createElement('img');
+        img.src = gifUrl;
+        img.alt = gifs[i].title;
+        carousel.appendChild(img);
+
+        await slideImage(img, progressBar, i, gifs.length);
+    }
+
+    document.body.removeChild(progressContainer);
 };
 
 const slideImage = (img, progressBar, index, total) => {
@@ -88,7 +92,7 @@ const updateBufferDisplay = (activeTag = '') => {
 document.getElementById('searchButton').addEventListener('click', () => {
     const searchQuery = document.getElementById('searchInput').value.trim();
     if (searchQuery) {
-        fetchGifs(searchQuery);
+        addQueryToBuffer(searchQuery);
     }
 });
 
@@ -96,7 +100,7 @@ document.getElementById('searchInput').addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
         const searchQuery = document.getElementById('searchInput').value.trim();
         if (searchQuery) {
-            fetchGifs(searchQuery);
+            addQueryToBuffer(searchQuery);
         }
     }
 });
@@ -104,7 +108,7 @@ document.getElementById('searchInput').addEventListener('keydown', (event) => {
 if (annyang) {
     const commands = {
         '*tag': (tag) => {
-            fetchGifs(tag);
+            addQueryToBuffer(tag);
         }
     };
     annyang.addCommands(commands);
