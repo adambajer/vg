@@ -23,7 +23,7 @@ img {
 }
 
 .carousel img {
-    width: 100%;
+    width: 50%;
     position: absolute;
     top: 20vh;
     left: 0;
@@ -131,11 +131,9 @@ img {
 
 #buffer {
     display: block;
-    width: 100vw;
-    height: 200px;
+
     overflow-x: auto;
     white-space: nowrap;
-    margin-top: 70px; /* Adjust to ensure it's below the search bar */
 }
 
 .buffer-item {
