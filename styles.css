@@ -24,8 +24,9 @@ img {
 
 #carousel img {
     position: absolute;
-    transform: translateX(100vw);
+    transform: translateX(0vw);
     transition: transform 1s linear;
+    right:0;
 }
 
 #carousel img.active {
@@ -33,7 +34,7 @@ img {
 }
 
 #carousel img.exit {
-    transform: translateX(-100vw);
+    transform: translateX(-50vw);
 }
 
 #queryTitle {
@@ -52,6 +53,8 @@ img {
 }
 
 #searchBar {
+
+    z-index: 9999;
     margin: 20px;
     position: fixed;
     display: flex;
@@ -59,9 +62,14 @@ img {
     align-items: center;
     backdrop-filter: blur(5px);
     background: #ffffff30;
-    width: 100%;
-    top: 0;
+    width: 86%;
+    margin: 0px auto;
+    top: 20px;
     padding: 10px;
+    border-radius: 20px;
+    border: 1px solid white;
+ 
+
 }
 
 #searchInput {
