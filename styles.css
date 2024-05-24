@@ -24,17 +24,17 @@ img {
 
 #carousel img {
     position: absolute;
-    transform: translateX(0vw);
+    transform: translateX(100%);
     transition: transform 1s linear;
-    right:0;
+    left:0;
 }
 
 #carousel img.active {
-    transform: translateX(0);
+    transform: translateX(50%);
 }
 
 #carousel img.exit {
-    transform: translateX(-50vw);
+    transform: translateX(100%);
 }
 
 #queryTitle {
