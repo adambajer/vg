@@ -156,3 +156,6 @@ img {
 .loading.visible {
     display: block;
 }
+#toggleAnnyang.rec  {
+    background:red;
+}
