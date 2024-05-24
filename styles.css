@@ -5,40 +5,7 @@ body {
     padding: 4px;
     border-radius: 10px;
 }
-
-img {
-    width: 50%;
-    height: auto;
-    vertical-align: top;
-    transition: left 1s linear;
-}
-.carousel {
-    position: relative;
-    width: 100%;
-    max-width: 100vw;
-    height: 70vw;
-    margin: auto;
-    margin-top:20vh;
-    overflow: hidden;
-    border-radius: 10px;
-}
-
-.carousel img {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 100vw;
-    transition: left 1s ease-in-out;
-}
-
-.carousel img.active {
-    left: 0;
-}
-
-.carousel img.exit {
-    left: -100vw;
-}
-
+ 
 #queryTitle {
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(20px);
@@ -158,4 +125,49 @@ img {
     
     box-shadow: red 0 0 5px;
     background:red;
+}
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.carousel img {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+    transition: left 1s;
+}
+
+.carousel img.active {
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.carousel img.exit {
+    left: -100%;
+}
+
+.loading {
+    display: none;
+}
+
+.loading.visible {
+    display: block;
+}
+
+.progress-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 5px;
+    background: #eee;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #76c7c0;
+    width: 0;
 }
