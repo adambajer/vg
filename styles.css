@@ -15,7 +15,7 @@ img {
 .carousel {
     position: relative;
     width: 100%;
-    max-width: 600px;
+    max-width: 100vwq
     margin: auto;
     overflow: hidden;
     border-radius: 10px;
@@ -77,8 +77,8 @@ img {
 }.carousel {
     position: relative;
     width: 100%;
-    max-width: 600px;
-    height: 300px;
+    max-width: 100vwq
+    height: 70vw;
     margin: auto;
     overflow: hidden;
     border-radius: 10px;
@@ -88,6 +88,7 @@ img {
     width: 100%;
     position: absolute;
     top:20vh;
+    left:0vw;
     transform: translateX(100vw);
     transition: transform 1s linear;
 }
