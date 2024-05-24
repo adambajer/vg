@@ -7,9 +7,9 @@ body {
 }
 
 img {
+    width: 100%;
     height: auto;
-    width: 50vw;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 .carousel {
@@ -22,19 +22,21 @@ img {
     border-radius: 10px;
 }
 
-#carousel img {
+.carousel img {
+    width: 100%;
     position: absolute;
-    transform: translateX(100%);
+    top: 20vh;
+    left: 0;
+    transform: translateX(100vw);
     transition: transform 1s linear;
-    left:0;
 }
 
-#carousel img.active {
-    transform: translateX(50%);
+.carousel img.active {
+    transform: translateX(0);
 }
 
-#carousel img.exit {
-    transform: translateX(100%);
+.carousel img.exit {
+    transform: translateX(-100vw);
 }
 
 #queryTitle {
@@ -53,8 +55,6 @@ img {
 }
 
 #searchBar {
-
-    z-index: 9999;
     margin: 20px;
     position: fixed;
     display: flex;
@@ -62,14 +62,9 @@ img {
     align-items: center;
     backdrop-filter: blur(5px);
     background: #ffffff30;
-    width: 86%;
-    margin: 0px auto;
-    top: 20px;
+    width: 100%;
+    top: 0;
     padding: 10px;
-    border-radius: 20px;
-    border: 1px solid white;
- 
-
 }
 
 #searchInput {
@@ -135,10 +130,14 @@ img {
 }
 
 #buffer {
-    display: block;
-
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
     overflow-x: auto;
-    white-space: nowrap;
+    margin-top: 70px;
+    justify-content: center; /* Center buffer items horizontally */
 }
 
 .buffer-item {
@@ -147,24 +146,4 @@ img {
     padding: 10px;
     background-color: #eee;
     border-radius: 5px;
-}
-
-.loading {
-position: fixed;
-    bottom: 0;
-    left: 0;
-    /* transform: translate(-50%, -50%); */
-    font-size: 24px;
-    display: none;
-    bottom: 0px;
-    /* background: rgba(255, 255, 255, 0.5); */
-    /* backdrop-filter: blur(4px); */
-    bottom: 45%;
-}
-
-.loading.visible {
-    display: block;
-}
-#toggleAnnyang.rec  {
-    background:red;
 }
