@@ -32,7 +32,7 @@ const processBuffer = async () => {
 
 const fetchAndDisplayGifs = async (tag) => {
     const apiKey = 'gxIFvvO71KLB9I3q3lyVmW9bc2V796qu';
-    const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${tag}&limit=3`);
+    const response = await fetch(`https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${tag}&limit=5`);
     const result = await response.json();
     const gifs = result.data;
 
@@ -121,8 +121,9 @@ const toggleAnnyang = () => {
             annyang.abort();
             document.getElementById('toggleAnnyang').innerText = 'Start Voice Recognition';
         } else {
+                        document.getElementById('toggleAnnyang').innerText = 'Stop Voice Recognition';
+
             annyang.start({ autoRestart: true, continuous: false });
-            document.getElementById('toggleAnnyang').innerText = 'Stop Voice Recognition';
         }
         isAnnyangActive = !isAnnyangActive;
     } else {
