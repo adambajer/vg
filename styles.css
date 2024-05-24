@@ -125,29 +125,34 @@ body {
     background:red;
 }
 #carousel {
-    position: relative;
-    width: 100%;
+    position:absolute;
     
 top:100px;
 
-    height: 400px;
-    overflow: hidden;
+    width: 100%;
+    
+top:100px;  
+    transition:all 1s;
 }
 
 #carousel img {
-    position: absolute;
+    display:block;
     top: 10%;
-    left: 100%;
-    transition: left 1s;
+    
+right:0;
+    
+    transition:all 1s;
 }
 
 #carousel img.active {
-    left: 0%;
-    transform: translate(-50%, 0);
+    right:100%;
+
+    transition:all 1s;
 }
 
 .carousel img.exit {
-    left: -100%;
+    right:-100%;
+    transition:all 1s;
 }
 
 .loading {
