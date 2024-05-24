@@ -4,22 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIF Search</title>
-    <link rel="icon" href="#" id="dynamic-favicon">
-     <link href="styles.css" rel="stylesheet">
-
-</head>
-<body>
-    <!-- Your HTML content -->
-    <input type="text" id="searchInput" placeholder="Enter search query">
-    <button id="searchButton">Search</button>
-    <div id="buffer"></div>
-    <div id="carousel"></div>
-    <div class="loading">Loading...</div>
-    
-    <div id="searchBar">
-        <button id="toggleAnnyang">Start Voice Recognition</button>
-        <p id="annyangStatus">Voice recognition is off.</p>
-    </div>
     
     <svg id="giphy-animation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20" style="display:none;">
         <text id="letter-G" x="0" y="15" font-family="Arial" font-size="15" fill="black" opacity="0">G</text>
@@ -39,6 +23,24 @@
             ]]>
         </script>
     </svg>
+    <link rel="icon" href="#" id="dynamic-favicon">
+     <link href="styles.css" rel="stylesheet">
+
+</head>
+<body>
+
+    
+    <div id="searchBar">
+            <!-- Your HTML content -->
+    <input type="text" id="searchInput" placeholder="Enter search query">
+    <button id="searchButton">Search</button>
+    <div id="buffer"></div>
+    <div class="loading">Loading...</div>
+        <button id="toggleAnnyang">Start Voice Recognition</button>
+        <p id="annyangStatus">Voice recognition is off.</p>
+    </div>
+    <div id="carousel"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
     <script src="main.js"></script>
 </body>
