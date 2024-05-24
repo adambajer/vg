@@ -151,3 +151,8 @@ img {
 }
 #annyangStatus {
     color:white;}
+#toggleAnnyang.rec {
+    
+    box-shadow: red 0 0 5px;
+    background:red;
+}
