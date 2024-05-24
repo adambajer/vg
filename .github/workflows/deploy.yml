@@ -28,9 +28,6 @@ jobs:
       run: |
         rm -rf ./*
         mv dist/* ./
-        rm -rf dist
-    - name: Commit and Push Changes
-      run: |
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         git config --global user.name "github-actions[bot]"
         git add .
