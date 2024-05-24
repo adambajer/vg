@@ -87,16 +87,17 @@ img {
 .carousel img {
     width: 100%;
     position: absolute;
-    transform: translateX(100%);
+    top:20vh;
+    transform: translateX(100vw);
     transition: transform 1s linear;
 }
 
 .carousel img.active {
-    transform: translateX(0);
+    transform: translateX(0vw);
 }
 
 .carousel img.exit {
-    transform: translateX(-100%);
+    transform: translateX(-100vw);
 }
 
 .progress-container {
