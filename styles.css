@@ -138,18 +138,18 @@ body {
     display:block;
     width:100%;
     height:auto;
-    transform:translateY(100vh);
+    transform:translateX(100vw);
     transition:all 1s;
 }
 
 #carousel img.active {
-  transform:translateY(0vh);
+  transform:translateX(0vw);
 
     transition:all 1s;
 }
 
 .carousel img.exit {
-  transform:translateY(-100vh);
+  transform:translateX(-100vw);
     transition:all 1s;
 }
 
