@@ -123,19 +123,29 @@ body {
     
     box-shadow: red 0 0 5px;
     background:red;
-}
-#carousel {
+}#carousel {
     position: relative;
     width: 100%;
+    height: 300px; /* Adjust as needed */
     overflow: hidden;
 }
 
 #carousel img {
     position: absolute;
     top: 0;
-    left: 100%;
+    left: 100%; /* Start outside the window on the right */
     width: 100%;
     transition: left 1s ease-in-out, opacity 1s ease-in-out;
+    opacity: 0;
+}
+
+#carousel img.active {
+    left: 0; /* Move into view */
+    opacity: 1;
+}
+
+#carousel img.exit {
+    left: -100%; /* Move out of view to the left */
     opacity: 0;
 }
 
