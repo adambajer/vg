@@ -136,10 +136,8 @@ body {
 
 #carousel img {
     display:block;
-    top: 10%;
     width:100%;
     height:auto;
-right:0;
     transform:translateY(100vh);
     transition:all 1s;
 }
