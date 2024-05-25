@@ -3,9 +3,11 @@ let isProcessing = false;
 let isAnnyangActive = false;
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize buffer display and loading indicator
     updateBufferDisplay();
     showLoading(false);
 
+    // Set up event listeners
     document.getElementById('searchButton').addEventListener('click', () => {
         const searchQuery = document.getElementById('searchInput').value.trim();
         if (searchQuery) {
@@ -33,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('carousel').innerHTML = "<p>Your browser does not support voice recognition.</p>";
     }
 
+    // Start recording if annyang is supported
     if (annyang && isAnnyangActive) {
         annyang.start({ autoRestart: true, continuous: false });
     }
@@ -113,7 +116,7 @@ const slideImage = (img, progressBar, index, total) => {
 
         setTimeout(() => {
             resolve();
-        }, 3000); // Match this duration with the CSS transition duration for active class
+        }, 3000);
     });
 };
 
