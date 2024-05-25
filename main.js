@@ -107,7 +107,7 @@ const slideImage = (img, progressBar, index, total) => {
             setTimeout(() => {
                 prevImg.classList.remove('exit');
                 prevImg.remove();
-            }, 1000); // Ensure this time matches the CSS transition duration
+            }, 3000); // Ensure this time matches the CSS transition duration
         }
 
         img.classList.add('active');
