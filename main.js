@@ -4,7 +4,7 @@ let isAnnyangActive = false;
 document.addEventListener('DOMContentLoaded', () => {
     annyang.start({ autoRestart: true, continuous: false });
     document.getElementById('toggleAnnyang').innerText = 'Stop';
-
+    document.getElementById('toggleAnnyang').classList.toggle('rec');
 });
 const addQueryToBuffer = (tag) => {
     buffer.push(tag);
