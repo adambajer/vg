@@ -138,17 +138,17 @@ body {
     display:block;
     width:100%;
     height:auto;
-    transform:translateX(0vw);
+    transform:translateX(-1000vw);
     transition:all 1s;
 }
 
 #carousel img.active {
-  transform:translateX(100vw);
+  transform:translateX(0vw);
 
 }
 
 .carousel img.exit {
-  transform:translateX(-100vw);
+  transform:translateX(100vw);
 
 }
 
