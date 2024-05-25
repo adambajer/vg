@@ -1,11 +1,43 @@
 let buffer = [];
 let isProcessing = false;
 let isAnnyangActive = false;
+
 document.addEventListener('DOMContentLoaded', () => {
-    annyang.start({ autoRestart: true, continuous: false });
-    document.getElementById('toggleAnnyang').innerText = 'Stop';
-    document.getElementById('toggleAnnyang').classList.toggle('rec');
+    updateBufferDisplay();
+    showLoading(false);
+
+    document.getElementById('searchButton').addEventListener('click', () => {
+        const searchQuery = document.getElementById('searchInput').value.trim();
+        if (searchQuery) {
+            addQueryToBuffer(searchQuery);
+        }
+    });
+
+    document.getElementById('searchInput').addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            const searchQuery = document.getElementById('searchInput').value.trim();
+            if (searchQuery) {
+                addQueryToBuffer(searchQuery);
+            }
+        }
+    });
+
+    document.getElementById('toggleAnnyang').addEventListener('click', toggleAnnyang);
+
+    if (annyang) {
+        annyang.addCallback('result', (phrases) => {
+            const searchQuery = phrases[0];
+            addQueryToBuffer(searchQuery);
+        });
+    } else {
+        document.getElementById('carousel').innerHTML = "<p>Your browser does not support voice recognition.</p>";
+    }
+
+    if (annyang && isAnnyangActive) {
+        annyang.start({ autoRestart: true, continuous: false });
+    }
 });
+
 const addQueryToBuffer = (tag) => {
     buffer.push(tag);
     updateBufferDisplay();
@@ -81,7 +113,7 @@ const slideImage = (img, progressBar, index, total) => {
 
         setTimeout(() => {
             resolve();
-        }, 1000);
+        }, 3000); // Match this duration with the CSS transition duration for active class
     });
 };
 
@@ -102,22 +134,6 @@ const showLoading = (show) => {
     loading.classList.toggle('visible', show);
 };
 
-document.getElementById('searchButton').addEventListener('click', () => {
-    const searchQuery = document.getElementById('searchInput').value.trim();
-    if (searchQuery) {
-        addQueryToBuffer(searchQuery);
-    }
-});
-
-document.getElementById('searchInput').addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-        const searchQuery = document.getElementById('searchInput').value.trim();
-        if (searchQuery) {
-            addQueryToBuffer(searchQuery);
-        }
-    }
-});
-
 const toggleAnnyang = () => {
     if (annyang) {
         if (isAnnyangActive) {
@@ -134,14 +150,3 @@ const toggleAnnyang = () => {
         document.getElementById('annyangStatus').innerText = 'Your browser does not support voice recognition.';
     }
 };
-
-document.getElementById('toggleAnnyang').addEventListener('click', toggleAnnyang);
-
-if (annyang) {
-    annyang.addCallback('result', (phrases) => {
-        const searchQuery = phrases[0];
-        addQueryToBuffer(searchQuery);
-    });
-} else {
-    document.getElementById('carousel').innerHTML = "<p>Your browser does not support voice recognition.</p>";
-}
