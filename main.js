@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize buffer display and loading indicator
     updateBufferDisplay();
     showLoading(false);
-
+toggleAnnyang();
     // Set up event listeners
     document.getElementById('searchButton').addEventListener('click', () => {
         const searchQuery = document.getElementById('searchInput').value.trim();
@@ -107,7 +107,7 @@ const slideImage = (img, progressBar, index, total) => {
             setTimeout(() => {
                 prevImg.classList.remove('exit');
                 prevImg.remove();
-            }, 3000); // Ensure this time matches the CSS transition duration
+            }, 1000); // Ensure this time matches the CSS transition duration
         }
 
         img.classList.add('active');
