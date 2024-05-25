@@ -1,7 +1,9 @@
 let buffer = [];
 let isProcessing = false;
 let isAnnyangActive = false;
-
+document.addEventListener('DOMContentLoaded', () => {
+    annyang.start({ autoRestart: true, continuous: false });
+});
 const addQueryToBuffer = (tag) => {
     buffer.push(tag);
     updateBufferDisplay();
