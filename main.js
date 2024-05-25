@@ -81,7 +81,7 @@ const slideImage = (img, progressBar, index, total) => {
 
         setTimeout(() => {
             resolve();
-        }, 3¨100);
+        }, 1000);
     });
 };
 
