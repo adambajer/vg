@@ -72,7 +72,6 @@ const slideImage = (img, progressBar, index, total) => {
         }
 
         img.classList.add('active');
-        img.style.left = '0';
 
         updateProgressBar(progressBar, (index + 1) / total);
 
