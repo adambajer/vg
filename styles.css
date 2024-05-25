@@ -125,28 +125,28 @@ body {
     background:red;
 }
 #carousel {
-    position: absolute;
-    /* top: 100px; */
-    top: 100px;
-    height: 85vh;
-    display: flex;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
 }
 
 #carousel img {
-    width:100%;
-    height:auto;
-    transform:translateX(100vw);
-    transition:all 1s;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    transition: left 1s ease-in-out, opacity 1s ease-in-out;
+    opacity: 0;
 }
 
 #carousel img.active {
-  transform:translateX(0vw);
-
+    left: 0;
+    opacity: 1;
 }
 
 #carousel img.exit {
-  transform:translateX(-100vw);
-
+    left: -100%;
+    opacity: 0;
 }
 
 
