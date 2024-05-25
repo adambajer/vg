@@ -140,18 +140,18 @@ body {
     width:100%;
     height:auto;
 right:0;
-    
+    transform:translateY(100vh);
     transition:all 1s;
 }
 
 #carousel img.active {
-    right:100%;
+  transform:translateY(0vh);
 
     transition:all 1s;
 }
 
 .carousel img.exit {
-    right:-100%;
+  transform:translateY(-100vh);
     transition:all 1s;
 }
 
