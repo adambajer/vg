@@ -147,7 +147,7 @@ body {
 
 }
 
-.carousel img.exit {
+#carousel img.exit {
   transform:translateX(100vw);
 
 }
