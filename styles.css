@@ -43,13 +43,13 @@ body, html {
     transition: transform 2s ease-in-out, right 2s ease-in-out;
 }
 
-img.active {
-        transform: translateX(calc(50vw - 100%));
+#carousel img.active {
+        transform: translateX(calc(50vw - 100%)) !important;
 
 }
 
-img.exit {
-    transform: translateX(calc(100vw - 100%));
+#carousel  img.exit {
+    transform: translateX(calc(100vw - 100%)) !important;
 }
 
 .loading {
