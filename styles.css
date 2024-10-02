@@ -22,15 +22,7 @@ body, html {
   font-size: 16px;
 }
 
-#carousel {
-  position: relative;
-  height: 60vh;
-  width: 100vw;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+ 
 #carousel {
     position: relative;
     display: block;
@@ -41,12 +33,12 @@ body, html {
 }
 
 #carousel img {
-    position: absolute; /* Absolute to control their movement */
-    right: 0;
+    position: relative; /* Absolute to control their movement */
+    
     display: block;
     max-height: max-content;
-    height: 100%;
-    width: max-content;
+    height: 60vw;
+    width: 100%;
     transform: translateX(100%); /* Start from outside the viewport */
     transition: transform 2s ease-in-out, right 2s ease-in-out;
 }
