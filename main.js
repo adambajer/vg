@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize buffer display and loading indicator
     updateBufferDisplay();
     showLoading(false);
-toggleAnnyang();
+    toggleAnnyang();
+    
     // Set up event listeners
     document.getElementById('searchButton').addEventListener('click', () => {
         const searchQuery = document.getElementById('searchInput').value.trim();
@@ -77,6 +78,7 @@ const fetchAndDisplayGifs = async (tag) => {
 
     const carousel = document.getElementById('carousel');
     carousel.innerHTML = '';
+    
     const progressContainer = document.createElement('div');
     progressContainer.className = 'progress-container';
     const progressBar = document.createElement('div');
@@ -107,7 +109,7 @@ const slideImage = (img, progressBar, index, total) => {
             setTimeout(() => {
                 prevImg.classList.remove('exit');
                 prevImg.remove();
-            }, 1000); // Ensure this time matches the CSS transition duration
+            }, 2000); // Ensure this time matches the CSS transition duration
         }
 
         img.classList.add('active');
@@ -116,7 +118,7 @@ const slideImage = (img, progressBar, index, total) => {
 
         setTimeout(() => {
             resolve();
-        }, 3000);
+        }, 3000); // Control how long each image stays visible
     });
 };
 
