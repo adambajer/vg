@@ -1,175 +1,72 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 4px;
-    border-radius: 10px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-#queryTitle {
-    background: rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(20px);
-    position: fixed;
-    z-index: 999;
-    padding: 2rem;
-    margin: 0;
-    text-shadow: 0px 0px 4px white;
-    border-radius: 10px;
-    left: 40%;
-    bottom: 10%;
-    border: 1px solid white;
-    font-size: 3rem;
+
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
 }
+
 #searchBar {
-    margin: 0px;
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-    background: #ffffff30;
-    width: 100vw;
-    top: 0px;
-    padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
 }
 
 #searchInput {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px 0 0 5px;
-    border: 1px solid #ccc;
-   
+  padding: 10px;
+  font-size: 16px;
 }
 
-#searchButton {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 0 5px 5px 0;
-    border: 1px solid #ccc;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-}
-
-#searchButton:hover {
-    background-color: #0056b3;
-}
-
-#toggleAnnyang {
-    margin-left: 20px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    background-color: #28a745;
-    color: white;
-    cursor: pointer;
-}
-
-#toggleAnnyang:hover {
-    background-color: #218838;
-}
-
-#annyangStatus {
-    margin-left: 20px;
-    font-size: 16px;
-    color: #555;
-}
-
-.progress-container {
-    width: 100%;
-    position:fixed;
-    top:0px;
-    background-color: #f3f3f3;
-    border-radius: 5px;
-    margin-top: 0px;
-    z-index: 999999;
-}
-
-.progress-bar {
-    width: 0;
-    height: 2px;
-    background-color: #4caf50;
-    border-radius: 5px;
-}
-
-.buffer-item.active {
-    font-weight: bold;
-    color: red;
-}
-
-#buffer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    height: auto;
-    overflow-x: auto;
-    margin-top: 130px;
-    z-index: 999999;
-    position: absolute;
-    justify-content: center;
-}
-
-.buffer-item {
-    display: inline-block;
-    margin: 5px;
-    padding: 10px;
-    background-color: #eee;
-    border-radius: 5px;
-}
-#annyangStatus {
-    color:white;}
-#toggleAnnyang.rec {
-    
-    box-shadow: red 0 0 5px;
-    background:red;
-}#carousel {
-    position: relative;
-    width: 100%;
-    height: 92VH;
-    overflow: hidden;
+#carousel {
+  position: relative;
+  height: 60vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #carousel img {
-    position: absolute;
-    top: 0;
-    
-
-    width: 50%;    transition: left 1s ease-in-out, opacity 1s ease-in-out;
-    opacity: 0;
+  position: absolute;
+  right: -100%; /* Start off-screen to the right */
+  max-height: 100%;
+  transition: transform 2s ease-in-out, right 2s ease-in-out; /* Sliding effect */
 }
 
-#carousel img.active {
-    left: 0; /* Move into view */
-    opacity: 1;
+img.active {
+  right: 0; /* Move to the center of the screen */
 }
 
-#carousel img.exit {
-    left: -100%; /* Move out of view to the left */
-    opacity: 0;
+img.exit {
+  transform: translateX(-100%); /* Slide out to the left */
 }
 
-#carousel img.active {
-    left: 0;
-    opacity: 1;
+.loading {
+  display: none;
 }
 
-#carousel img.exit {
-    left: -100%;
-    opacity: 0;
+.loading.visible {
+  display: block;
 }
-
 
 .progress-container {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    height: 5px;
-    background: #eee;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #ddd;
 }
 
 .progress-bar {
-    height: 100%;
-    background: #76c7c0;
-    width: 0;
+  height: 100%;
+  width: 0;
+  background-color: #4caf50;
+  transition: width 0.5s;
 }
