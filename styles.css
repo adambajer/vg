@@ -33,20 +33,22 @@ body, html {
 }
 
 #carousel img {
-  position: absolute;
+position: relative;
     right: 0;
+    display: block;
     /* max-height: max-content; */
     height: 100%;
-    transform: translateX(100vw);
+    width: max-content;
+    /* transform: translateX(100vw); */
     transition: transform 2s ease-in-out, right 2s ease-in-out;
 }
 
 img.active {
-    transform: translateX(0vw); 
+    transform: translateX(50vw); 
 }
 
 img.exit {
-    transform: translateX(-100vw); 
+    transform: translateX(100vw); 
 }
 
 .loading {
