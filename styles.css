@@ -44,11 +44,11 @@ position: relative;
 }
 
 img.active {
-    transform: translateX(50vw); 
+    right:50vw;
 }
 
 img.exit {
-    transform: translateX(100vw); 
+ right:100vw;
 }
 
 .loading {
