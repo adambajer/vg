@@ -31,24 +31,32 @@ body, html {
   align-items: center;
   justify-content: center;
 }
+#carousel {
+    position: relative;
+    display: block;
+    max-height: max-content;
+    height: 100%;
+    width: 100%; /* Carousel should take the full width */
+    overflow: hidden; /* Hide images outside of the view */
+}
 
 #carousel img {
-position: relative;
+    position: absolute; /* Absolute to control their movement */
     right: 0;
     display: block;
-    /* max-height: max-content; */
+    max-height: max-content;
     height: 100%;
     width: max-content;
-    /* transform: translateX(100vw); */
+    transform: translateX(100%); /* Start from outside the viewport */
     transition: transform 2s ease-in-out, right 2s ease-in-out;
 }
 
 img.active {
-    right:50vw;
+    transform: translateX(calc(50vw - 50%)); /* Center the image in the viewport */
 }
 
 img.exit {
- right:100vw;
+    transform: translateX(100vw); /* Move image out to the right */
 }
 
 .loading {
