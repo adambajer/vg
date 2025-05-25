@@ -41,7 +41,7 @@ const initAnnyang = () => {
         });
 
         // Automaticky spustit Annyang na začátku
-        annyang.start({ autoRestart: true, continuous: false });
+        annyang.start({ autoRestart: true, continuous: true });
         annyangStatusDiv.innerText = 'Talk to search for GIFs!'; // Počáteční stav
         annyangStatusDiv.classList.add('listening');
 
