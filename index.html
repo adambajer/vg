@@ -93,20 +93,19 @@
             white-space: nowrap;
             will-change: transform;
             align-items: center;
-            /* Přechod na transform pro plynulost, pokud je to možné, jinak se spolehne na JS animaci */
         }
 
         #carouselTrack img {
-            max-width: 100vw;
-            max-height: 100vh;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            flex-shrink: 0;
-            opacity: 0;
+            /* KLÍČOVÉ ZMĚNY ZDE */
+            width: 50vw; /* Pevná šířka GIFu - 50% šířky viewportu */
+            height: auto; /* Výška se přizpůsobí, aby zachovala poměr stran */
+            max-height: 100vh; /* Zabrání, aby GIF byl vyšší než viewport */
+            object-fit: contain; /* Zajistí, že celý GIF bude vidět */
+            flex-shrink: 0; /* Zabrání zmenšení GIFů */
+            opacity: 0; /* Pro fade-in efekt */
             transition: opacity 0.5s ease-in-out;
-            margin: 0 10px;
-            box-sizing: border-box;
+            margin: 0 1vw; /* Mezera mezi GIFy, relativní k viewportu */
+            box-sizing: border-box; /* Zahrnuje padding a border do šířky */
         }
 
         /* Nový element pro zobrazení slova */
@@ -114,25 +113,25 @@
             position: fixed;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%) scale(0.5); /* Začíná zmenšené */
+            transform: translate(-50%, -50%) scale(0.5);
             color: white;
-            font-size: 5em; /* Velký text */
+            font-size: 5em;
             font-weight: bold;
-            opacity: 0; /* Zpočátku neviditelné */
+            opacity: 0;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            transition: transform 1s ease-out, opacity 1s ease-out, filter 1s ease-out; /* Plynulé přechody */
+            transition: transform 1s ease-out, opacity 1s ease-out, filter 1s ease-out;
             z-index: 1002;
-            pointer-events: none; /* Umožní klikání "skrz" na karusel */
+            pointer-events: none;
         }
         #wordDisplay.active {
-            transform: translate(-50%, -50%) scale(1); /* Zvětší se */
-            opacity: 1; /* Objeví se */
-            filter: blur(0px); /* Odstraní rozostření */
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            filter: blur(0px);
         }
         #wordDisplay.fading-out {
-            transform: translate(-50%, -50%) scale(1.5); /* Trochu se zvětší před zmizením */
-            opacity: 0; /* Zmizí */
-            filter: blur(5px); /* Rozostří se */
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0;
+            filter: blur(5px);
         }
     </style>
 </head>
@@ -147,19 +146,21 @@
         </div>
     </div>
 
-    <div id="wordDisplay"></div> <script src="main.js"></script> </body>
+    <div id="wordDisplay"></div>
+
     <script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./service-worker.js')
-                .then(registration => {
-                    console.log('ServiceWorker registered: ', registration);
-                })
-                .catch(registrationError => {
-                    console.log('ServiceWorker registration failed: ', registrationError);
-                });
-        });
-    }
-</script>
-<script src="main.js"></script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => {
+                        console.log('ServiceWorker registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('ServiceWorker registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+    <script src="main.js"></script>
+</body>
 </html>
